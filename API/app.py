@@ -53,6 +53,10 @@ app.register_blueprint(syncs3_api)
 
 CORS(app)
 
+@app.route("/health", methods=["GET"])
+def health():
+    return jsonify({"status": "ok"}), 200
+
 #potrebno kad je front end na drugom serveru 127.0.0.1
 @app.after_request
 def add_headers(response):
